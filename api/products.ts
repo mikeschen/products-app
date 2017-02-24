@@ -28,4 +28,11 @@ router.post('/', (req, res) => {
   })
 });
 
+router.delete('/:id', (req, res) => {
+  let productId = new mongodb.ObjectID(req.params['id']);
+  Database.db.collection('products').remove({_id:productId}).then(() => {
+    res.sendStatus(200);
+  })
+})
+
 export default router;

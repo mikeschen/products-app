@@ -7,11 +7,15 @@ namespace productsapp.Services {
     }
 
     public list() {
-      return this.ProductResource.query()
+      return this.ProductResource.query();
     }
 
     public save(product) {
       return this.ProductResource.save(product).$promise;
+    }
+
+    public remove(id) {
+      return this.ProductResource.remove({id:id}).$promise;
     }
 
     constructor($resource:ng.resource.IResourceService) {

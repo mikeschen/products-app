@@ -11,6 +11,12 @@ namespace productsapp.Controllers {
           })
         }
 
+        public remove(id) {
+          this.productService.remove(id).then(() => {
+            this.products = this.productService.list();
+          })
+        }
+
         constructor(
           private productService:productsapp.Services.ProductService,
           private $state:ng.ui.IStateService,
@@ -20,6 +26,25 @@ namespace productsapp.Controllers {
           let productId = $stateParams['id'];
           this.product = productService.get(productId);
         }
+    }
+
+    export class EditController {
+      public product;
+
+      public save() {
+        this.productService.save(this.product).then(() => {
+          this.$state.go('home')
+        });
+      }
+
+      constructor(
+        private productService:productsapp.Services.ProductService,
+        private $state:ng.ui.IStateService,
+        private $stateParams:ng.ui.IStateParamsService
+      ) {
+        let productId = $stateParams['id'];
+        this.product = productService.get(productId);
+      }
     }
 
     export class AboutController {
