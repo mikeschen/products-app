@@ -18,8 +18,13 @@
           <a href="/login">Login</a>
         </div>
         <hr />
+        <script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script>
+
+<input type="filepicker" data-fp-apikey="A7h6gM7XCT1KKD2yRvpvmz"
+onchange="document.getElementById('pic').innerHTML += (event.fpfile.url) + '<br>'">
 
         <ui-view></ui-view>
+        <p id="pic"></p>
   </div>
 
   <script src="/bower_components/angular/angular.min.js"></script>
